@@ -27,9 +27,9 @@ jobs:
       - name: Install {fmt}
         run: ./install-fmt
       - name: Compile
-        run: g++ main.cc -I/opt/smelibs/include -L/opt/smelibs/lib -lfmt -std=c++17
+        run: g++ -o test main.cc -I/opt/smelibs/include -L/opt/smelibs/lib -lfmt -std=c++17
       - name: Run
-        run: ./a.out
+        run: ./test
 
   win64:
     name: Windows 64-bit
@@ -51,6 +51,6 @@ jobs:
       - name: Install {fmt}
         run: ./install-fmt
       - name: Compile
-        run: g++ main.cc -I/c/smelibs/include -L/c/smelibs/lib -lfmt -std=c++17
+        run: g++ -o test main.cc -I/c/smelibs/include -L/c/smelibs/lib -lfmt -std=c++17
       - name: Run
-        run: ./a.out
+        run: ./test
