@@ -16,6 +16,13 @@ jobs:
           sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 100
           sudo apt-get install libncurses5-dbg
       - uses: actions/checkout@v2
+      - name: Install {fmt}
+        run: |
+          git clone https://github.com/fmtlib/fmt.git
+          mkdir fmt/build && cd fmt/build
+          cmake ..
+          make
+          make install
       - name: Compile
         run: g++ main.cc 
       - name: Run
@@ -34,6 +41,13 @@ jobs:
           msystem: MINGW64
           update: true
           install: mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake make git dos2unix
+      - name: Install {fmt}
+        run: |
+          git clone https://github.com/fmtlib/fmt.git
+          mkdir fmt/build && cd fmt/build
+          cmake ..
+          make
+          make install
       - name: Compile
         run: g++ main.cc 
       - name: Run
