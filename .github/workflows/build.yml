@@ -3,7 +3,7 @@ name: CI Builds
 on: [push]
 
 env:
-  FMT_VERSION: '7.1.3'
+  FMT_VERSION: '8.0.0'
 
 jobs:
 
@@ -27,9 +27,9 @@ jobs:
       - name: Install {fmt}
         run: ./install-fmt
       - name: Compile
-        run: g++ -o test main.cc -I/opt/smelibs/include -L/opt/smelibs/lib -lfmt -std=c++17
+        run: g++ -o test-fmt main.cc -I/opt/smelibs/include -L/opt/smelibs/lib -lfmt -std=c++17
       - name: Run
-        run: ./test
+        run: ./test-fmt
 
   win64:
     name: Windows 64-bit
@@ -51,6 +51,6 @@ jobs:
       - name: Install {fmt}
         run: ./install-fmt
       - name: Compile
-        run: g++ -o test main.cc -I/c/smelibs/include -L/c/smelibs/lib -lfmt -std=c++17
+        run: g++ -o test-fmt main.cc -I/c/smelibs/include -L/c/smelibs/lib -lfmt -std=c++17
       - name: Run
-        run: ./test
+        run: ./test-fmt
