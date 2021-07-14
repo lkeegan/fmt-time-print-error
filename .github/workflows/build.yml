@@ -27,10 +27,10 @@ jobs:
       - name: Install {fmt}
         run: ./install-fmt
       - name: Compile
-        run: g++ main.cc 
+        run: g++ -I/opt/smelibs/include -lfmt main.cc
       - name: Run
         run: ./a.out
-    
+
   win64:
     name: Windows 64-bit
     runs-on: windows-2019
@@ -51,6 +51,6 @@ jobs:
       - name: Install {fmt}
         run: ./install-fmt
       - name: Compile
-        run: g++ main.cc 
+        run: g++ -I/opt/smelibs/include -lfmt main.cc
       - name: Run
         run: ./a.out
