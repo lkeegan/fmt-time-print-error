@@ -10,6 +10,6 @@ int main() {
                            std::chrono::system_clock::now());
     std::tm local_time = *std::localtime(&startup_time);
 
-  auto time_string = fmt::format("{:%a %Y-%m-%d %T %Z}",local_time);
+  auto time_string = fmt::format("{:%a %Y-%m-%d %H:%M:%S %Z}",local_time);
   fmt::print(time_string);
 }

@@ -52,9 +52,9 @@ jobs:
         with:
           msystem: MINGW64
           update: true
-          install: mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake make git dos2unix mingw-w64-x86_64-fmt
-      # - name: Install {fmt}
-      #   run: ./install-fmt
+          install: mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake make git dos2unix
+      - name: Install {fmt}
+        run: ./install-fmt
       - name: Compile
         run: g++ -o test-fmt main.cc -I/c/smelibs/include -L/c/smelibs/lib -lfmt -std=c++17
       - name: Run
