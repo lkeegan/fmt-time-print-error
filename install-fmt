@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e -x
+
+echo "FMT_VERSION: ${FMT_VERSION}"
+
+# build static version of fmt
+git clone -b $FMT_VERSION --depth 1 https://github.com/fmtlib/fmt.git
+cd fmt
+mkdir build
+cd build
+cmake -G "Unix Makefiles" .. \
+  -DCMAKE_OSX_DEPLOYMENT_TARGET="10.14" \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_SHARED_LIBS=OFF \
+  -DCMAKE_C_FLAGS="-fpic -fvisibility=hidden" \
+  -DCMAKE_CXX_FLAGS="-fpic -fvisibility=hidden" \
+  -DCMAKE_INSTALL_PREFIX="$INSTALL_PREFIX" \
+  -DCMAKE_CXX_STANDARD=17 \
+  -DFMT_DOC=OFF \
+  -DFMT_TEST:BOOL=OFF
+time make -j$NPROCS
+#make test
+$SUDOCMD make install
+cd ../../
