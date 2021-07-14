@@ -27,7 +27,7 @@ jobs:
       - name: Install {fmt}
         run: ./install-fmt
       - name: Compile
-        run: g++ -I/opt/smelibs/include -lfmt main.cc
+        run: g++ -I/opt/smelibs/include -L/opt/smelibs/lib -lfmt main.cc
       - name: Run
         run: ./a.out
 
@@ -51,6 +51,6 @@ jobs:
       - name: Install {fmt}
         run: ./install-fmt
       - name: Compile
-        run: g++ -I/opt/smelibs/include -lfmt main.cc
+        run: g++ -I/c/smelibs/include -L/c/smelibs/lib -lfmt main.cc
       - name: Run
         run: ./a.out
